@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -16,6 +17,13 @@ return new class extends Migration
             $table->json('name');
             $table->timestamps();
         });
+
+        DB::table('item_statuses')->insert([
+            ['name' => json_encode(['en' => 'In Stock'])],
+            ['name' => json_encode(['en' => 'In Use'])],
+            ['name' => json_encode(['en' => 'Under Repair'])],
+            ['name' => json_encode(['en' => 'Retired'])],
+        ]);
     }
 
     /**

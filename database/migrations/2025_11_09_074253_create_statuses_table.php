@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -14,8 +15,17 @@ return new class extends Migration
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->json('name');
+            $table->string('type'); // item or request
             $table->timestamps();
         });
+
+        DB::table('statuses')->insert([
+            ['name' => json_encode(['en' => 'Pending', 'ka' => 'მომლოდინე']), 'type' => 'request'],
+            ['name' => json_encode(['en' => 'In Progress', 'ka' => 'პროგრესში']), 'type' => 'item'],
+            ['name' => json_encode(['en' => 'Resolved', 'ka' => 'გადაჭრილი']), 'type' => 'item'],
+            ['name' => json_encode(['en' => 'Closed', 'ka' => 'დახურული']), 'type' => 'item'],
+
+        ]);
     }
 
     /**

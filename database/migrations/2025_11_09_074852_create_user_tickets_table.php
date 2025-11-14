@@ -22,8 +22,8 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
             $table->string('label');
-            $table->text('ai_recommendation');
-            $table->boolean('is_ai_correct')->nullable()->default(null);
+            $table->text('ai_recommendation')->nullable();
+            $table->boolean('was_ai_correct')->nullable()->default(null);
             $table->text('comment')->nullable()->default(null);
             $table->timestamps();
         });

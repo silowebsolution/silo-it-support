@@ -16,4 +16,9 @@ class ManageUserTickets extends ManageRecords
             CreateAction::make(),
         ];
     }
+
+    protected function getHeaderWidgets(): array
+    {
+        return UserTicketResource::getHeaderWidgets();
+    }
 }

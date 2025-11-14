@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_asigned_tickes', function (Blueprint $table) {
+        Schema::create('user_assigned_tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\User::class)
                 ->constrained()
