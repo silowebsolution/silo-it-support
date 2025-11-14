@@ -1,0 +1,18 @@
+{
+    "IT Support": "IT მხარდაჭერა",
+    "Ticket": "მოთხოვნა",
+    "Tickets": "მოთხოვნები",
+    "User": "მომხმარებელი",
+    "Status": "სტატუსი",
+    "Label": "სათაური",
+    "Was AI correct?": "იყო თუ არა AI სწორი?",
+    "AI Recommendation": "AI რეკომენდაცია",
+    "Assigned Tickets": "მინიჭებული მოთხოვნები",
+    "Assigned to": "მინიჭებული",
+    "Created At": "შექმნის თარიღი",
+    "Updated At": "განახლების თარიღი",
+    "Total Tickets (Last 7 Days)": "სულ მოთხოვნები (7 დღე)",
+    "Open Tickets": "ღია მოთხოვნები",
+    "In Progress Tickets": "მიმდინარე მოთხოვნები",
+    "Closed Tickets (Last 7 Days)": "დახურული მოთხოვნები (7 დღე)"
+}
