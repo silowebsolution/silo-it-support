@@ -59,4 +59,9 @@ class UserTicket extends Model
     {
         return $this->hasMany(UserAssignedTicket::class);
     }
+
+    public function userTicketItem(): HasMany
+    {
+        return $this->hasMany(UserTicketItem::class);
+    }
 }

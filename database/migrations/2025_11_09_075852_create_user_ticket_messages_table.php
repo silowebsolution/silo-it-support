@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignIdFor(\App\Models\UserTicket::class)
                 ->constrained()
                 ->cascadeOnUpdate()
-                ->restrictOnDelete();
+                ->cascadeOnDelete(); // Changed from restrictOnDelete()
             $table->foreignIdFor(\App\Models\User::class)
                 ->constrained()
                 ->cascadeOnUpdate()

@@ -25,5 +25,16 @@
     "Item Statuses": "ნივთის სტატუსები",
     "Item Status": "ნივთის სტატუსი",
     "Locations": "ადგილმდებარეობა",
-    "Location": "ადგილმდებარეობა"
+    "Location": "ადგილმდებარეობა",
+    "Item": "ნივთი",
+    "Items": "ნივთბი",
+    "Inventory": "ინვენტარი",
+    "Inventories": "ინვენტარი",
+    "Description": "აღწერა",
+    "Code": "კოდი",
+    "Image": "სურათი",
+    "Ticket Related Item": "მოთხოვნასთან დაკავშირებული ნივთი",
+    "Ticket Related Items": "მოთხოვნასთან დაკავშირებული ნივთები",
+    "AI Correctness": "AI სისწორე",
+    "IT Specialist Comment": "IT სპეციალისტის კომენტარი"
 }

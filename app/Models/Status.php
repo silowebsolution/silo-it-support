@@ -20,6 +20,11 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereUpdatedAt($value)
+ * @property-read mixed $translations
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereJsonContainsLocale(string $column, string $locale, ?mixed $value, string $operand = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereJsonContainsLocales(string $column, array $locales, ?mixed $value, string $operand = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereLocale(string $column, string $locale)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Status whereLocales(string $column, array $locales)
  * @mixin \Eloquent
  */
 class Status extends Model

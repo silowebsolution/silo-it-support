@@ -18,6 +18,11 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereUpdatedAt($value)
+ * @property-read mixed $translations
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereJsonContainsLocale(string $column, string $locale, ?mixed $value, string $operand = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereJsonContainsLocales(string $column, array $locales, ?mixed $value, string $operand = '=')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereLocale(string $column, string $locale)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereLocales(string $column, array $locales)
  * @mixin \Eloquent
  */
 class ItemStatus extends Model

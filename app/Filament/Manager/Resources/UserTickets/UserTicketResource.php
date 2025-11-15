@@ -2,7 +2,9 @@
 
 namespace App\Filament\Manager\Resources\UserTickets;
 
+use App\Filament\Manager\Resources\UserTickets\Pages\EditUserTicket;
 use App\Filament\Manager\Resources\UserTickets\Pages\ManageUserTickets;
+use App\Filament\Manager\Resources\UserTickets\RelationManagers\UserTicketItemRelationManager;
 use App\Filament\Manager\Resources\UserTickets\Widgets\UserTicketStatsOverview;
 use App\Models\Priority;
 use App\Models\Status;
@@ -14,6 +16,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -89,9 +92,11 @@ class UserTicketResource extends Resource
                     ->label(__('Was AI correct?'))
                     ->onColor('success')
                     ->offColor('danger'),
-                Textarea::make('ai_recommendation')
+                RichEditor::make('ai_recommendation')
                     ->label(__('AI Recommendation'))
-                    ->readOnly()
+                    ->columnSpanFull(),
+                RichEditor::make('it_specialist_comment')
+                    ->label(__('AI Recommendation'))
                     ->columnSpanFull(),
                 Repeater::make('userAssignedTickets')
                     ->label(__('Assigned Tickets'))
@@ -109,6 +114,7 @@ class UserTicketResource extends Resource
 
                                 return User::query()->whereNotIn('id', $userIdsToExclude)->pluck('name', 'id');
                             })
+                            ->searchable()
                             ->required(),
                     ])
                     ->grid(2)
@@ -171,7 +177,7 @@ class UserTicketResource extends Resource
                     ->query(function (Builder $query, array $data): Builder {
                         return $query->when(
                             $data['label_value'],
-                            fn (Builder $query, $label): Builder => $query->where('label', 'like', "%{$label}%")
+                            fn(Builder $query, $label): Builder => $query->where('label', 'like', "%{$label}%")
                         );
                     }),
                 SelectFilter::make('assigned_to')
@@ -196,6 +202,14 @@ class UserTicketResource extends Resource
     {
         return [
             'index' => ManageUserTickets::route('/'),
+            'edit' => EditUserTicket::route('/{record}/edit'),
+        ];
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            UserTicketItemRelationManager::class
         ];
     }
 }

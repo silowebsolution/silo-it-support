@@ -28,6 +28,7 @@ return new class extends Migration
                 ->restrictOnDelete();
             $table->string('label');
             $table->text('ai_recommendation')->nullable();
+            $table->text('it_specialist_comment')->nullable();
             $table->boolean('was_ai_correct')->nullable()->default(null);
             $table->text('comment')->nullable()->default(null);
             $table->timestamps();

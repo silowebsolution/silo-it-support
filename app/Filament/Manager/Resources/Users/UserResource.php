@@ -5,6 +5,8 @@ namespace App\Filament\Manager\Resources\Users;
 use App\Filament\Manager\Resources\Users\Pages\CreateUser;
 use App\Filament\Manager\Resources\Users\Pages\EditUser;
 use App\Filament\Manager\Resources\Users\Pages\ListUsers;
+use App\Filament\Manager\Resources\Users\RelationManagers\ItemRelationManager;
+use App\Filament\Manager\Resources\Users\RelationManagers\UserTicketsRelationManager;
 use App\Filament\Manager\Resources\Users\Schemas\UserForm;
 use App\Filament\Manager\Resources\Users\Tables\UsersTable;
 use App\Models\User;
@@ -24,7 +26,7 @@ class UserResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Manager');
+        return __('IT Support');
     }
 
     public static function getModelLabel(): string
@@ -50,7 +52,8 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            ItemRelationManager::class,
+            UserTicketsRelationManager::class
         ];
     }
 
