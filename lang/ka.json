@@ -3,6 +3,7 @@
     "Ticket": "მოთხოვნა",
     "Tickets": "მოთხოვნები",
     "User": "მომხმარებელი",
+    "Users": "მომხმარებლები",
     "Status": "სტატუსი",
     "Label": "სათაური",
     "Was AI correct?": "იყო თუ არა AI სწორი?",
@@ -14,5 +15,15 @@
     "Total Tickets (Last 7 Days)": "სულ მოთხოვნები (7 დღე)",
     "Open Tickets": "ღია მოთხოვნები",
     "In Progress Tickets": "მიმდინარე მოთხოვნები",
-    "Closed Tickets (Last 7 Days)": "დახურული მოთხოვნები (7 დღე)"
+    "Closed Tickets (Last 7 Days)": "დახურული მოთხოვნები (7 დღე)",
+    "Name": "სახელი",
+    "Email address": "ელ. ფოსტა",
+    "Roles": "როლები",
+    "Manager": "მენეჯერი",
+    "Managers": "მენეჯერები",
+    "Configuration": "კონფიგურაცია",
+    "Item Statuses": "ნივთის სტატუსები",
+    "Item Status": "ნივთის სტატუსი",
+    "Locations": "ადგილმდებარეობა",
+    "Location": "ადგილმდებარეობა"
 }

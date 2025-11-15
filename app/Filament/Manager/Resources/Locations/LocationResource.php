@@ -10,7 +10,9 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
@@ -43,9 +45,14 @@ class LocationResource extends Resource
     {
         return $schema
             ->components([
-                Textarea::make('name')
-                    ->required()
-                    ->columnSpanFull(),
+                Grid::make(2)->schema(
+                    collect(config('app.locales'))->map(fn ($locale) =>
+                    TextInput::make("name.$locale")
+                        ->label("Name ($locale)")
+                        ->required()
+                        ->columnSpan('full')
+                    )->toArray()
+                ),
             ]);
     }
 
@@ -54,6 +61,9 @@ class LocationResource extends Resource
         return $table
             ->recordTitleAttribute('Locations')
             ->columns([
+                TextColumn::make('name')
+                    ->label(__('Name'))
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

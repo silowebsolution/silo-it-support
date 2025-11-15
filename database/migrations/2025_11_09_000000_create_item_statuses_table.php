@@ -19,10 +19,11 @@ return new class extends Migration
         });
 
         DB::table('item_statuses')->insert([
-            ['name' => json_encode(['en' => 'In Stock'])],
-            ['name' => json_encode(['en' => 'In Use'])],
-            ['name' => json_encode(['en' => 'Under Repair'])],
-            ['name' => json_encode(['en' => 'Retired'])],
+
+            ['name' => json_encode(['en' => 'In Stock','ka'=>'მარაგში'])],
+            ['name' => json_encode(['en' => 'In Use','ka'=>'მიმაგრებული'])],
+            ['name' => json_encode(['en' => 'Under Repair','ka'=>'შესაკეთბელი'])],
+            ['name' => json_encode(['en' => 'Retired','ka'=>'ჩამოწერილი'])],
         ]);
     }
 

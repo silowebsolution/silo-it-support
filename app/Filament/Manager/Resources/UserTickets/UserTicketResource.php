@@ -4,6 +4,7 @@ namespace App\Filament\Manager\Resources\UserTickets;
 
 use App\Filament\Manager\Resources\UserTickets\Pages\ManageUserTickets;
 use App\Filament\Manager\Resources\UserTickets\Widgets\UserTicketStatsOverview;
+use App\Models\Priority;
 use App\Models\Status;
 use App\Models\User;
 use App\Models\UserTicket;
@@ -77,6 +78,10 @@ class UserTicketResource extends Resource
                     ->label(__('Status'))
                     ->relationship('status', 'name')
                     ->required(),
+                Select::make('priority_id')
+                    ->label(__('Priority'))
+                    ->options(Priority::all()->pluck('name', 'id')) // Simplified using HasTranslatedName
+                    ->required(),
                 TextInput::make('label')
                     ->label(__('Label'))
                     ->required(),
@@ -126,6 +131,9 @@ class UserTicketResource extends Resource
                     ->label(__('Status'))
                     ->numeric()
                     ->sortable(),
+                TextColumn::make('priority.name')
+                    ->label(__('Priority'))
+                    ->sortable(),
                 TextColumn::make('label')
                     ->label(__('Label'))
                     ->searchable(),
@@ -153,6 +161,9 @@ class UserTicketResource extends Resource
                 SelectFilter::make('status')
                     ->relationship('status', 'name')
                     ->label(__('Status')),
+                SelectFilter::make('priority')
+                    ->options(Priority::all()->pluck('name', 'id')) // Simplified using HasTranslatedName
+                    ->label(__('Priority')),
                 Filter::make('label')
                     ->form([
                         TextInput::make('label_value')->label(__('Label')),

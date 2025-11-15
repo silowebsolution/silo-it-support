@@ -21,6 +21,11 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->restrictOnDelete();
+            $table->foreignId('priority_id')
+                ->nullable()
+                ->constrained('priorities')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
             $table->string('label');
             $table->text('ai_recommendation')->nullable();
             $table->boolean('was_ai_correct')->nullable()->default(null);

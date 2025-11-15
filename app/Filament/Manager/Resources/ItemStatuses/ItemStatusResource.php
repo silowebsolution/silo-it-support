@@ -9,12 +9,14 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class ItemStatusResource extends Resource
 {
@@ -39,14 +41,19 @@ class ItemStatusResource extends Resource
         return __('Item Status');
     }
 
-
+//config('app.locales')
     public static function form(Schema $schema): Schema
     {
         return $schema
             ->components([
-                Textarea::make('name')
-                    ->required()
-                    ->columnSpanFull(),
+                Grid::make(2)->schema(
+                    collect(config('app.locales'))->map(fn ($locale) =>
+                    TextInput::make("name.$locale")
+                        ->label("Name ($locale)")
+                        ->required()
+                        ->columnSpan('full')
+                    )->toArray()
+                ),
             ]);
     }
 
@@ -55,6 +62,9 @@ class ItemStatusResource extends Resource
         return $table
             ->recordTitleAttribute('Item Statuses')
             ->columns([
+                TextColumn::make('name')
+                    ->label(__('Name'))
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
