@@ -11,6 +11,7 @@ use App\Models\Status;
 use App\Models\User;
 use App\Models\UserTicket;
 use BackedEnum;
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -83,7 +84,7 @@ class UserTicketResource extends Resource
                     ->required(),
                 Select::make('priority_id')
                     ->label(__('Priority'))
-                    ->options(Priority::all()->pluck('name', 'id')) // Simplified using HasTranslatedName
+                    ->options(Priority::all()->pluck('name', 'id'))
                     ->required(),
                 TextInput::make('label')
                     ->label(__('Label'))
@@ -190,6 +191,10 @@ class UserTicketResource extends Resource
             ->recordActions([
                 EditAction::make(),
                 DeleteAction::make(),
+                Action::make('chat')
+                    ->label(__('Chat'))
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->url(fn (UserTicket $record): string => static::getUrl('chat', ['record' => $record])),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
@@ -198,11 +203,13 @@ class UserTicketResource extends Resource
             ]);
     }
 
+
     public static function getPages(): array
     {
         return [
             'index' => ManageUserTickets::route('/'),
             'edit' => EditUserTicket::route('/{record}/edit'),
+            'chat' => Pages\ChatUserTicket::route('/{record}/chat'),
         ];
     }
 

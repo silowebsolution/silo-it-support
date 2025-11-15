@@ -54,7 +54,7 @@ class UserTicketItemRelationManager extends RelationManager
             ])
             ->recordActions([
                 Action::make('view_ai_correctness')
-                    ->label(__('View AI Correctness'))
+                    ->label(__('View Comments'))
                     ->modalHeading(__('AI Correctness and IT Specialist Comment'))
                     ->modalContent(function (UserTicketItem $record) {
                         $wasAiCorrect = $record->userTicket->was_ai_correct;

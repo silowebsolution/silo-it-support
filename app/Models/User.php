@@ -112,4 +112,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserTicket::class);
     }
+
+    public function getAvatarUrlAttribute(): string
+    {
+        return 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=FFFFFF&background=111827';
+    }
 }

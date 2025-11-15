@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property int $id
@@ -24,5 +25,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserTicketMessage extends Model
 {
-    //
+    protected $guarded = ['id'];
+
+    public function userTicket(): BelongsTo
+    {
+        return $this->belongsTo(UserTicket::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

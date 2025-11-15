@@ -22,6 +22,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserAssignedTicket> $userAssignedTickets
  * @property-read int|null $user_assigned_tickets_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserTicketMessage> $messages
+ * @property-read int|null $messages_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket query()
@@ -63,5 +65,10 @@ class UserTicket extends Model
     public function userTicketItem(): HasMany
     {
         return $this->hasMany(UserTicketItem::class);
+    }
+
+    public function messages(): HasMany
+    {
+        return $this->hasMany(UserTicketMessage::class);
     }
 }
