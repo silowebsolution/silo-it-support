@@ -38,6 +38,14 @@
     "AI Correctness": "AI სისწორე",
     "IT Specialist Comment": "IT სპეციალისტის კომენტარი",
     "View Comments": "კომენტარების ნახვა",
+    "failed": "მონაცემები არასწორია.",
+    "Login": "შესვლა",
+    "Email": "ელ. ფოსტა",
+    "Password": "პაროლი",
+    "Or continue with": "ან გააგრძელეთ",
+    "Google": "Google",
     "Messages": "შეტყობინებები",
-    "Ticket label": "მოთხოვნის სათაური"
+    "Ticket label": "მოთხოვნის სათაური",
+   "required":"attribute ველი აუცილებელია.",
+   "email":"attribute უნდა იყოს სწორი ელ. ფოსტის მისამართი."
 }
