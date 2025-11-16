@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicketMessage whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicketMessage whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicketMessage whereUserTicketId($value)
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\UserTicket $userTicket
  * @mixin \Eloquent
  */
 class UserTicketMessage extends Model

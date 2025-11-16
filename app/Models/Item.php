@@ -34,6 +34,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Item whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Item whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Item whereUserId($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserTicketItem> $userTicketItem
+ * @property-read int|null $user_ticket_item_count
  * @mixin \Eloquent
  */
 class Item extends Model

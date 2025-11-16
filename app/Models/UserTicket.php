@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
 /**
  * @property int $id
  * @property int $user_id
@@ -13,17 +14,20 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int|null $priority_id
  * @property string $label
  * @property string|null $ai_recommendation
+ * @property string|null $it_specialist_comment
  * @property int|null $was_ai_correct
  * @property string|null $comment
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserTicketMessage> $messages
+ * @property-read int|null $messages_count
  * @property-read \App\Models\Priority|null $priority
  * @property-read \App\Models\Status $status
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserAssignedTicket> $userAssignedTickets
  * @property-read int|null $user_assigned_tickets_count
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserTicketMessage> $messages
- * @property-read int|null $messages_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserTicketItem> $userTicketItem
+ * @property-read int|null $user_ticket_item_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket query()
@@ -31,6 +35,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket whereComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket whereItSpecialistComment($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket whereLabel($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket wherePriorityId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UserTicket whereStatusId($value)

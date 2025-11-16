@@ -24,6 +24,8 @@ use Spatie\Translatable\HasTranslations;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereJsonContainsLocales(string $column, array $locales, ?mixed $value, string $operand = '=')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereLocale(string $column, string $locale)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|ItemStatus whereLocales(string $column, array $locales)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Item> $Item
+ * @property-read int|null $item_count
  * @mixin \Eloquent
  */
 class ItemStatus extends Model

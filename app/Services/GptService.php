@@ -13,7 +13,7 @@ class GptService
 
     public function __construct()
     {
-        $this->apiKey = config('services.openai.api_key', env('OPENAI_API_KEY'));
+        $this->apiKey = config('services.openai.api_key');
     }
 
     /**
@@ -33,7 +33,6 @@ class GptService
         }
 
         try {
-            // Get all priorities for the prompt
             $priorities = Priority::all();
             $priorityList = $priorities->map(function ($priority) {
                 $name = is_array($priority->name) ? ($priority->name['en'] ?? $priority->name) : $priority->name;
@@ -91,8 +90,7 @@ Return only the JSON, no additional text.";
             }
 
             $content = $response->json('choices.0.message.content', '');
-            
-            // Clean the response (remove markdown code blocks if present)
+
             $content = preg_replace('/```json\s*/', '', $content);
             $content = preg_replace('/```\s*/', '', $content);
             $content = trim($content);
@@ -110,7 +108,6 @@ Return only the JSON, no additional text.";
                 ];
             }
 
-            // Validate priority_id exists
             $priorityId = $result['priority_id'] ?? null;
             if ($priorityId && !Priority::find($priorityId)) {
                 Log::warning('Invalid priority_id from GPT', ['priority_id' => $priorityId]);
@@ -134,9 +131,6 @@ Return only the JSON, no additional text.";
         }
     }
 
-    /**
-     * Get default priority (Medium)
-     */
     protected function getDefaultPriority(): int
     {
         $mediumPriority = Priority::where('id', 2)->first();

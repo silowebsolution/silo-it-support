@@ -12,4 +12,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/items/{code}', [ItemApiController::class, 'search'])->middleware('auth:sanctum');
+Route::get('/items/{code}', [ItemApiController::class, 'search']);
+    //->middleware('auth:sanctum');

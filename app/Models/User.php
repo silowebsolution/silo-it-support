@@ -50,6 +50,11 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutPermission($permissions)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, $guard = null)
+ * @property-read string $avatar_url
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Item> $item
+ * @property-read int|null $item_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\UserTicket> $userTicket
+ * @property-read int|null $user_ticket_count
  * @mixin \Eloquent
  */
 class User extends Authenticatable implements FilamentUser

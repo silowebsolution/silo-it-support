@@ -1,4 +1,72 @@
-<div class="flex h-screen bg-white dark:bg-zinc-900">
+<div class="flex flex-col h-screen bg-white dark:bg-zinc-900">
+    <!-- Top Bar -->
+    <div class="h-16 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center justify-between px-4">
+        <div class="flex items-center">
+            <h1 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">IT Help</h1>
+        </div>
+        
+        <!-- User Menu -->
+        <div class="relative" x-data="{ open: false }" @click.away="open = false">
+            <button
+                @click="open = !open"
+                class="flex items-center gap-2 p-1.5 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs font-medium">
+                    {{ Auth::user()->initials() }}
+                </div>
+                <svg class="w-4 h-4 text-zinc-600 dark:text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            
+            <!-- Dropdown Menu -->
+            <div
+                x-show="open"
+                x-transition:enter="transition ease-out duration-100"
+                x-transition:enter-start="opacity-0 scale-95"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-95"
+                class="absolute right-0 mt-2 w-56 rounded-lg shadow-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 py-1 z-50"
+                style="display: none;"
+            >
+                <!-- User Info -->
+                <div class="px-4 py-3 border-b border-zinc-200 dark:border-zinc-700">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center text-sm font-medium">
+                            {{ Auth::user()->initials() }}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium text-zinc-900 dark:text-zinc-100 truncate">
+                                {{ Auth::user()->name }}
+                            </p>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 truncate">
+                                {{ Auth::user()->email }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Logout -->
+                <form method="POST" action="{{ route('logout') }}" class="w-full">
+                    @csrf
+                    <button
+                        type="submit"
+                        class="w-full text-left px-4 py-2 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition-colors flex items-center gap-2"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
+                        {{ __('Log Out') }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden">
     <!-- Left Sidebar -->
     <div class="w-64 border-r border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex flex-col">
         <!-- New Chat Button -->
@@ -146,6 +214,7 @@
                 </form>
             </div>
         </div>
+    </div>
     </div>
 </div>
 
