@@ -13,7 +13,6 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\Width;
 use Filament\Widgets\AccountWidget;
-use App\Filament\Manager\Widgets\ItemStatusOverview; // Import the new widget
 //use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -46,7 +45,6 @@ class ManagerPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Manager/Widgets'), for: 'App\Filament\Manager\Widgets')
             ->widgets([
                // AccountWidget::class,
-                ItemStatusOverview::class,
                // FilamentInfoWidget::class,
             ])
             ->middleware([
@@ -62,6 +60,7 @@ class ManagerPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+                'role:administrator|manager|it',
             ]);
     }
 }
