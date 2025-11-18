@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Factories\Sequence;
+use Faker\Factory as Faker;
 
 class DummyUsers extends Seeder
 {
@@ -15,30 +15,38 @@ class DummyUsers extends Seeder
      */
     public function run(): void
     {
+        $faker = Faker::create();
+
         // Create Admin User
-        User::factory()->create([
+        User::create([
             'name' => 'Admin User',
             'email' => 'admin@test.com',
             'password' => Hash::make('admin@test.com'),
         ])->assignRole('administrator');
 
         // Create Manager User
-        User::factory()->create([
+        User::create([
             'name' => 'Manager',
             'email' => 'manager@test.com',
             'password' => Hash::make('manager@test.com'),
         ])->assignRole('manager');
 
         // Create 5 IT Users
-        User::factory(5)->create()->each(function ($user) {
-            $user->assignRole('it');
-        });
+        for ($i = 0; $i < 5; $i++) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => Hash::make('password'),
+            ])->assignRole('it');
+        }
 
         // Create 195 regular users
-        // The manager user created above will also get the 'user' role.
-        // If that's not desired, you can adjust the logic.
-        User::factory(195)->create()->each(function ($user) {
-            $user->assignRole('user');
-        });
+        for ($i = 0; $i < 195; $i++) {
+            User::create([
+                'name' => $faker->name,
+                'email' => $faker->unique()->safeEmail,
+                'password' => Hash::make('password'),
+            ])->assignRole('user');
+        }
     }
 }
