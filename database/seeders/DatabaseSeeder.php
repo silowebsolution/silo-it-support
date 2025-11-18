@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             DummyUsers::class,
             LocationSeeder::class,
             DummyItemSeeder::class,
+            DummyUserRequestSeeder::class,
         ]);
     }
 }

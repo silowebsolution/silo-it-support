@@ -5,9 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
-use Faker\Factory as Faker;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 
 class DummyUsers extends Seeder
 {
@@ -16,32 +15,30 @@ class DummyUsers extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create();
-
-        $adminUser = User::create([
+        // Create Admin User
+        User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@test.com',
             'password' => Hash::make('admin@test.com'),
-        ]);
-        $adminUser->assignRole('administrator');
+        ])->assignRole('administrator');
 
-        $manager = User::create([
+        // Create Manager User
+        User::factory()->create([
             'name' => 'Manager',
             'email' => 'manager@test.com',
             'password' => Hash::make('manager@test.com'),
-        ]);
-        $manager->assignRole('manager');
+        ])->assignRole('manager');
 
-        User::factory(200)->create();
+        // Create 5 IT Users
+        User::factory(5)->create()->each(function ($user) {
+            $user->assignRole('it');
+        });
 
-        $users = User::where('id', '>', 1)->get();
-
-        foreach ($users as $user){
-            if(in_array($user->id,[3,4,5,6,7])){
-                $user->assignRole('it');
-            }else{
-                $user->assignRole('user');
-            }
-        }
+        // Create 195 regular users
+        // The manager user created above will also get the 'user' role.
+        // If that's not desired, you can adjust the logic.
+        User::factory(195)->create()->each(function ($user) {
+            $user->assignRole('user');
+        });
     }
 }
