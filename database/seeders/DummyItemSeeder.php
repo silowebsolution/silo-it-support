@@ -41,7 +41,7 @@ class DummyItemSeeder extends Seeder
                     'name' => $itemName,
                     'description' => 'Standard issue ' . $itemName,
                     'code' => 'IT-' . str_pad(rand(1, 99999), 5, '0', STR_PAD_LEFT),
-                    'image' => 'https://via.placeholder.com/640x480.png/00aa22?text=Item+' . $itemName,
+                    'image' => '',
                 ]);
 
                 if (isset($itemDetailsData[$itemName])) {
@@ -50,8 +50,8 @@ class DummyItemSeeder extends Seeder
                         'item_id' => $item->id,
                         'name' => $itemName . ' Details',
                         'description' => $detailDescription,
-                        'image' => 'https://via.placeholder.com/640x480.png/00aa22?text=Item+' . $itemName,
-                        'image_name' => 'placeholder.png',
+                        'image' => '',
+                        'image_name' => '',
                         'code' => 'IT-DETAIL-' . str_pad(rand(1, 99999), 5, '0', STR_PAD_LEFT),
                     ]);
                 }
