@@ -39,7 +39,7 @@ class UserTicketResource extends Resource
 {
     protected static ?string $model = UserTicket::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::Bolt;
 
     protected static ?string $recordTitleAttribute = 'label';
 
