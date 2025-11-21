@@ -3,6 +3,9 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\Auth\Login;
+use App\Filament\Widgets\ItemStatsOverview;
+use App\Filament\Widgets\TicketStatusChart;
+use App\Filament\Widgets\UserTicketChart;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -45,8 +48,11 @@ class ManagerPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Manager/Widgets'), for: 'App\Filament\Manager\Widgets')
             ->widgets([
-               // AccountWidget::class,
-               // FilamentInfoWidget::class,
+                ItemStatsOverview::class,
+                UserTicketChart::class,
+                TicketStatusChart::class,
+                // AccountWidget::class,
+                // FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

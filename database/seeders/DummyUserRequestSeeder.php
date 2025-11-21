@@ -66,13 +66,13 @@ class DummyUserRequestSeeder extends Seeder
             'მომხმარებელს დაეყენა მოთხოვნილი პროგრამა.'
         ];
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $user = $users->random();
             $itUser = $itUsers->random();
             $status = $statuses->random();
             $priority = $priorities->isNotEmpty() ? $priorities->random() : null;
 
-            $wasAiCorrect = rand(0, 3) > 0 ? 1 : 0; // 75% chance to be correct
+            $wasAiCorrect = rand(0, 3) > 0 ? 1 : 0;
             $itSpecialistComment = ($status->name !== 'Pending' && $status->name !== 'New') ? $itComments[array_rand($itComments)] : null;
 
             $ticket = UserTicket::create([
@@ -83,6 +83,7 @@ class DummyUserRequestSeeder extends Seeder
                 'ai_recommendation' => $aiRecommendations[array_rand($aiRecommendations)],
                 'was_ai_correct' => $wasAiCorrect,
                 'it_specialist_comment' => $itSpecialistComment,
+                'created_at' => now()->subDays(rand(0, 30)),
             ]);
 
             UserAssignedTicket::create(['user_ticket_id' => $ticket->id, 'user_id' => $itUser->id]);

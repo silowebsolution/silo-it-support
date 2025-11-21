@@ -27,7 +27,7 @@
     "Locations": "ადგილმდებარეობა",
     "Location": "ადგილმდებარეობა",
     "Item": "ნივთი",
-    "Items": "ნივთბი",
+    "Items": "ნივთები",
     "Inventory": "ინვენტარი",
     "Inventories": "ინვენტარი",
     "Description": "აღწერა",
@@ -46,6 +46,9 @@
     "Google": "Google",
     "Messages": "შეტყობინებები",
     "Ticket label": "მოთხოვნის სათაური",
-   "required":"attribute ველი აუცილებელია.",
-   "email":"attribute უნდა იყოს სწორი ელ. ფოსტის მისამართი."
+    "required": "attribute ველი აუცილებელია.",
+    "email": "attribute უნდა იყოს სწორი ელ. ფოსტის მისამართი.",
+    "Daily Tickets by Status (Last Month)": "ყოველდღიური მოთხოვნები სტატუსის მიხედვით (ბოლო თვე)",
+    "Ticket Summary": "მოთხოვნების შეჯამება",
+    "Total Items": "ნივთების ჯამი"
 }
