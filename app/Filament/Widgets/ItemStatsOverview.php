@@ -12,7 +12,7 @@ class ItemStatsOverview extends BaseWidget
     protected function getStats(): array
     {
         $stats = [
-            Stat::make('Total Items', Item::count()),
+            Stat::make(__('Total Items'), Item::count()),
         ];
 
         $itemStatuses = ItemStatus::withCount('Item')->get();
