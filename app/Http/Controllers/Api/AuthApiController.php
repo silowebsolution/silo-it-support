@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -22,7 +23,15 @@ class AuthApiController extends Controller
             ]);
         }
 
+        /** @var User $user */
         $user = Auth::user();
+
+        if (!$user->hasAnyRole(['administrator', 'it', 'manager'])) {
+            return response()->json([
+                'message' => 'User has no access'
+            ], 403);
+        }
+
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
