@@ -23,7 +23,10 @@ class ManagerExports extends Page implements HasTable
 
     protected string $view = 'filament.manager.pages.manager-exports';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Manager';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Manager');
+    }
 
     public static function getNavigationLabel(): string
     {
