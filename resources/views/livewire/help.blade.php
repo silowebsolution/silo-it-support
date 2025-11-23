@@ -4,7 +4,7 @@
         <div class="flex items-center">
             <h1 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100">IT Help</h1>
         </div>
-        
+
         <!-- User Menu -->
         <div class="relative" x-data="{ open: false }" @click.away="open = false">
             <button
@@ -18,7 +18,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
-            
+
             <!-- Dropdown Menu -->
             <div
                 x-show="open"
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Logout -->
                 <form method="POST" action="{{ route('logout') }}" class="w-full">
                     @csrf
@@ -64,14 +64,14 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Main Content Area -->
     <div class="flex flex-1 overflow-hidden">
     <!-- Left Sidebar -->
     <div class="w-64 border-r border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex flex-col">
         <!-- New Chat Button -->
         <div class="p-4 border-b border-zinc-200 dark:border-zinc-800">
-            <button 
+            <button
                 wire:click="newChat"
                 class="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors text-sm font-medium text-zinc-900 dark:text-zinc-100">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,8 +132,8 @@
                                 <div class="flex gap-3 max-w-[80%] {{ $isOwn ? 'flex-row-reverse' : 'flex-row' }}">
                                     <!-- Avatar -->
                                     <div class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium
-                                        {{ $isOwn 
-                                            ? 'bg-blue-500 text-white' 
+                                        {{ $isOwn
+                                            ? 'bg-blue-500 text-white'
                                             : 'bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200' }}">
                                         @if($user)
                                             {{ $user->initials() }}
@@ -141,7 +141,7 @@
                                             ?
                                         @endif
                                     </div>
-                                    
+
                                     <!-- Message Bubble -->
                                     <div class="flex flex-col gap-1">
                                         @if(!$isOwn && $user)
@@ -149,9 +149,9 @@
                                                 {{ $user->name }}
                                             </div>
                                         @endif
-                                        <div class="rounded-2xl px-4 py-3 
-                                            {{ $isOwn 
-                                                ? 'bg-blue-500 text-white rounded-br-sm' 
+                                        <div class="rounded-2xl px-4 py-3
+                                            {{ $isOwn
+                                                ? 'bg-blue-500 text-white rounded-br-sm'
                                                 : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 rounded-bl-sm' }}">
                                             <p class="text-sm whitespace-pre-wrap break-words">{{ $message->message }}</p>
                                         </div>
@@ -225,11 +225,10 @@
             container.scrollTop = container.scrollHeight;
         }
 
-        // Sync URL on initial load if there's a selected ticket but no ticket in URL
         const urlParams = new URLSearchParams(window.location.search);
         const ticketInUrl = urlParams.get('ticket');
         const selectedTicketId = @js($selectedTicketId);
-        
+
         if (selectedTicketId && !ticketInUrl) {
             const url = new URL(window.location);
             url.searchParams.set('ticket', selectedTicketId);
@@ -245,18 +244,16 @@
             }, 100);
         });
 
-        // Handle URL updates
         Livewire.on('update-url', (event) => {
-            // Handle both array and object formats
             const ticketId = Array.isArray(event) ? (event[0]?.ticket ?? event[0]) : (event?.ticket ?? event);
             const url = new URL(window.location);
-            
+
             if (ticketId) {
                 url.searchParams.set('ticket', ticketId);
             } else {
                 url.searchParams.delete('ticket');
             }
-            
+
             window.history.pushState({}, '', url);
         });
     });

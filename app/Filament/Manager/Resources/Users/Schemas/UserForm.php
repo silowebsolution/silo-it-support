@@ -2,13 +2,10 @@
 
 namespace App\Filament\Manager\Resources\Users\Schemas;
 
-use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash; // Import Hash facade
+use Illuminate\Support\Facades\Hash;
 
 class UserForm
 {
@@ -23,7 +20,7 @@ class UserForm
                     ->label(__('Email address'))
                     ->email()
                     ->required()
-                    ->unique(ignoreRecord: true), // Ensure email is unique, ignoring the current record on edit
+                    ->unique(ignoreRecord: true),
                 TextInput::make('password')
                     ->label(__('Password'))
                     ->password()
