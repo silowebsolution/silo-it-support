@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\Pages\Auth\Login;
 use App\Filament\Widgets\ItemStatsOverview;
 use App\Filament\Widgets\TicketStatusChart;
+use App\Filament\Widgets\UserAssignedTicketDailySummaryChart; // Added this line
 use App\Filament\Widgets\UserTicketChart;
 use Filament\FontProviders\GoogleFontProvider;
 use Filament\Http\Middleware\Authenticate;
@@ -51,6 +52,7 @@ class ManagerPanelProvider extends PanelProvider
                 ItemStatsOverview::class,
                 UserTicketChart::class,
                 TicketStatusChart::class,
+                UserAssignedTicketDailySummaryChart::class,
                 // AccountWidget::class,
                 // FilamentInfoWidget::class,
             ])
