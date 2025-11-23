@@ -50,5 +50,17 @@
     "email": "attribute უნდა იყოს სწორი ელ. ფოსტის მისამართი.",
     "Daily Tickets by Status (Last Month)": "ყოველდღიური მოთხოვნები სტატუსის მიხედვით (ბოლო თვე)",
     "Ticket Summary": "მოთხოვნების შეჯამება",
-    "Total Items": "ნივთების ჯამი"
+    "Total Items": "ნივთების ჯამი",
+    "Exports": "ექსპორტები",
+    "Export Items": "ნივთების ექსპორტი",
+    "Export User Tickets": "მომხმარებლის მოთხოვნების ექსპორტი",
+    "Export Specialist Assigned Tickets": "სპეციალისტზე მინიჭებული მოთხოვნების ექსპორტი",
+    "File Name": "ფაილის სახელი",
+    "Exporter": "ექსპორტერი",
+    "Total Rows": "სულ რიგები",
+    "Completed At": "დასრულების თარიღი",
+    "All": "ყველა",
+    "Last Week": "ბოლო კვირა",
+    "Last Month": "ბოლო თვე",
+    "Last Year": "ბოლო წელი"
 }

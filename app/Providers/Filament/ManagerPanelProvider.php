@@ -34,7 +34,7 @@ class ManagerPanelProvider extends PanelProvider
             ->id('manager')
             ->path('manager')
             ->font('Noto Sans Georgian', provider: GoogleFontProvider::class)
-            //->databaseNotifications()
+            ->databaseNotifications()
             ->maxContentWidth(Width::Full)
             ->sidebarFullyCollapsibleOnDesktop()
             ->login(Login::class)
