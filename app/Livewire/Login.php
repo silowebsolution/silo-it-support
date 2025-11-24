@@ -21,6 +21,8 @@ class Login extends Component
 
     public function mount()
     {
+        auth()->check() && redirect()->to('/help');
+
         if (User::where('email', 'user@test.com')->exists()) {
             $this->email = 'user@test.com';
             $this->password = 'user@test.com';
